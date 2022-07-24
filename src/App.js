@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,useEffect} from 'react'
+import{Col,Row,Container}from 'react-bootstrap'
+import './App.css'
 
-function App() {
+import Form from './components/Form'
+
+import TodoList from './components/TodoList'
+
+export default function App() {
+
+const [inputText, setInputText] = useState("");
+
+const [todoList, setTodoList] = useState([])
+
+const [status, setStatus] = useState("all")
+
+const [filterTodos, setFiltereTodos] = useState([])
+
+useEffect(() => {
+  const filterHandler =()=>{
+    switch(status){
+      case 'compelet':
+        setFiltereTodos(todoList.filter((todo)=>todo.compelet ===true))
+        break;
+        case 'uncompelet':
+        setFiltereTodos(todoList.filter((todo)=>todo.compelet===false))
+        break;
+        default:
+          setFiltereTodos(todoList)
+          break;
+    }
+  }
+  filterHandler()
+},[todoList,status])
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container>
+      <Row  className="justify-content-md-center align-item-center">
+          <Col md={12}>
+            <h1 className="text-center m-auto w-100"> To Do List</h1>
+          </Col>
+
+          <Col md={12}>
+          
+              <Form 
+              todoList={todoList}
+              setTodoList={setTodoList}
+              inputText={inputText}
+              setInputText={setInputText} 
+              setStatus={setStatus}
+              />
+
+              <TodoList filterTodos={filterTodos} toDo={todoList} setTodoList={setTodoList}/>
+          </Col>
+    </Row>
+    </Container>
+   
+    
+  )
 }
 
-export default App;
+
+

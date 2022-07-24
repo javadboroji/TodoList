@@ -1,0 +1,22 @@
+.item{
+    justify-content: space-between;
+    background: rgb(250, 250, 250);
+    margin-top: 3px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.button{
+    padding: 5px;
+}
+.button-trash{
+    margin-left: 5px;
+}
+.compelet{
+    text-decoration: line-through;
+}
+.uncompelet{
+    text-decoration: none;
+}
+.list-item-box{
+    width: 77%;
+}

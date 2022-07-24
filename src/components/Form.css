@@ -1,0 +1,23 @@
+.input-box{
+    position: relative;
+    display: flex;
+    width: 80%;
+}
+.form-inp{
+
+    border: none;
+    text-align: right;
+    padding: 10px;
+}
+.form-inp:focus{
+    outline: none !important;
+}
+.form-button{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    border: none;
+}
+.filter-todo{
+    margin-top: 18px;
+}
